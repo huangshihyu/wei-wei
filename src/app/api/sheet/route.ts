@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Papa from 'papaparse';
-import { SheetRow } from '@/store/api/sheetApi';
+import type { SheetRow } from '@/store/api/sheetApi';
 
 const SHEET_CSV_URL =
   'https://docs.google.com/spreadsheets/d/1onlWkOMf5aYRdWiYYSoR6KZJd-3w_4ENzTJYWXCTtLY/export?format=csv&gid=0';
@@ -12,7 +12,7 @@ export async function GET() {
 
     const { data } = Papa.parse<string[]>(csv, {
       header: false,
-      skipEmptyLines: true,
+      skipEmptyLines: true, 
     });
 
     const rows = data.slice(2);
